@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ESPAÑOL: My 60-Day Spanish Learning Handbook - Complete CEFR A1 Digital Curriculum for Sakib Ahmed">
+  <title>ESPAÑOL: My 60-Day Spanish Learning Handbook 🇪🇸</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Editorial Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+      <div class="nav-brand" onclick="window.app.switchView('overview')">
+        <span class="nav-flag" style="display: inline-flex; align-items: center;">
+          <svg width="32" height="22" viewBox="0 0 750 500" style="border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.25);">
+            <rect width="750" height="500" fill="#AA151B"/>
+            <rect width="750" height="250" y="125" fill="#F1BF00"/>
+            <circle cx="210" cy="250" r="45" fill="#AA151B" opacity="0.85"/>
+            <path d="M 190 230 L 230 230 L 220 270 L 200 270 Z" fill="#F1BF00"/>
+          </svg>
+        </span>
+        <div class="nav-titles">
+          <h1>ESPAÑOL</h1>
+          <p>60 Days to A1 • Learning Handbook</p>
+        </div>
+      </div>
+
+      <div class="nav-search-bar">
+        <span class="nav-search-icon">🔍</span>
+        <input type="text" id="global-search-input" placeholder="Search words, grammar, or topics (e.g., metro, preterite, gustar)...">
+      </div>
+
+      <div class="nav-actions">
+        <div class="nav-progress-pill">
+          <span>🔥</span>
+          <span id="nav-progress-text">0/60 Days (0%)</span>
+        </div>
+        <button class="nav-btn" onclick="window.app.goToLesson(window.app.currentDay || 1)">
+          📖 Continue
+        </button>
+        <button class="nav-btn primary" onclick="window.app.switchView('final-exam')">
+          🎓 Certificate
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs Strip -->
+    <nav class="tabs-strip">
+      <button class="tab-link active" data-view="overview" onclick="window.app.switchView('overview')">
+        🏠 Home & Cover
+      </button>
+      <button class="tab-link" data-view="lesson" onclick="window.app.switchView('lesson')">
+        📖 Daily Lesson
+      </button>
+      <button class="tab-link" data-view="getting-started" onclick="window.app.switchView('getting-started')">
+        🗺️ Getting Started (Part A)
+      </button>
+      <button class="tab-link" data-view="dictionary" onclick="window.app.switchView('dictionary')">
+        📚 A-Z Dictionary (600 Words)
+      </button>
+      <button class="tab-link" data-view="grammar" onclick="window.app.switchView('grammar')">
+        📘 Grammar Reference
+      </button>
+      <button class="tab-link" data-view="milestones" onclick="window.app.switchView('milestones')">
+        🏆 The 6 Milestones
+      </button>
+      <button class="tab-link" data-view="final-exam" onclick="window.app.switchView('final-exam')">
+        🎓 Final Exam & Certificate
+      </button>
+    </nav>
+
+    <!-- Main Content Dynamic Viewport -->
+    <div class="main-layout" id="main-content-view">
+      <!-- Injected dynamically by js/app.js -->
+    </div>
+
+    <!-- Global Milestone/Info Modal -->
+    <div class="modal-overlay" id="app-modal-overlay" onclick="if(event.target === this) window.app.closeModal()">
+      <div class="modal-window">
+        <button class="modal-close-btn" onclick="window.app.closeModal()">✕</button>
+        <div id="app-modal-body"></div>
+      </div>
+    </div>
+
+    <!-- Editorial Footer -->
+    <footer style="background: var(--bg-subtle); border-top: 1px solid var(--border-subtle); padding: 3rem 2rem; text-align: center; font-size: 0.85rem; color: var(--charcoal-light); margin-top: auto;">
+      <div style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--red-deep); margin-bottom: 0.4rem;">
+        ESPAÑOL: 60 DAYS TO A1 • MY PERSONAL SPANISH LEARNING HANDBOOK 🇪🇸
+      </div>
+      <p style="margin-bottom: 0.85rem;">
+        Designed and published for <strong>Sakib Ahmed</strong>. 60 complete daily lessons, 600 core vocabulary words, 8 CEFR grammar pillars, and standard Spain Spanish audio.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+        <a href="javascript:void(0)" onclick="window.app.switchView('getting-started')" style="color: var(--charcoal-medium); text-decoration: none;">Pronunciation Guide</a>
+        <a href="javascript:void(0)" onclick="window.app.switchView('dictionary')" style="color: var(--charcoal-medium); text-decoration: none;">Complete Vocabulary</a>
+        <a href="javascript:void(0)" onclick="window.app.switchView('grammar')" style="color: var(--charcoal-medium); text-decoration: none;">Grammar Reference</a>
+        <a href="javascript:void(0)" onclick="window.print()" style="color: var(--red-deep); font-weight: 700; text-decoration: none;">🖨️ Export Handbook to PDF</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Data Modules (Load sequentially) -->
+  <script src="data/getting-started.js"></script>
+  <script src="data/lessons/stage1.js"></script>
+  <script src="data/lessons/stage2.js"></script>
+  <script src="data/lessons/stage3.js"></script>
+  <script src="data/lessons/stage4.js"></script>
+  <script src="data/lessons/stage5.js"></script>
+  <script src="data/lessons/stage6.js"></script>
+  <script src="data/milestones.js"></script>
+  <script src="data/grammar-reference.js"></script>
+  <script src="data/vocabulary-index.js"></script>
+  <script src="data/final-exam.js"></script>
+
+  <!-- Application Controller -->
+  <script src="js/app.js"></script>
+</body>
+</html>
